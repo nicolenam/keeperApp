@@ -1,21 +1,10 @@
-const Note = ({notes}) =>{
-    
+const Note = () =>{
     return(
-        <div>
-        {
-            notes.map((note)=>{
-                return(
-                    <div className="note" key={note.key}>
-                        <h2>{note.title}</h2>
-                        <p>{note.content}</p>
-                    </div>
-                )
-            })
-        }
+        <div className="note">
+            <h2>This is note title</h2>
+            <p>This is note content</p>
         </div>
     )
-
-
 }
 
 export default Note;
