@@ -1,9 +1,19 @@
-const Note = () =>{
+const Note = ({array}) =>{
+
     return(
-        <div className="note">
-            <h2>This is note title</h2>
-            <p>This is note content</p>
-        </div>
+
+            array.map((item) => {
+
+                return(
+                    <div className="note">
+                        <h2>{item.title}</h2>
+                        <p>{item.content}</p>
+                    </div>
+                )
+            })
+
+        
+       
     )
 }
 

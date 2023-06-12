@@ -1,24 +1,43 @@
-import { useState } from 'react'; 
+import { useState } from 'react';
 
-const Form = () =>{
+const Form = ({setArray}) =>{
 
-    const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("");
+  const [note, setNote] = useState("");
 
     const handleChange = (e) =>{
-        setTitle(e.target.value)
+
+        if(e.target.name === "title"){
+            setTitle(e.target.value);
+        }else{
+            setNote(e.target.value);
+        }
+        
     }
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(title)
+
+        const noteObject = {
+            title: title,
+            content: note
+        }
+
+        setArray((prev)=> [...prev, noteObject]);
+        handleReset();
+    }
+
+    const handleReset = () =>{
+        setTitle("");
+        setNote("");
     }
 
     return(
         <form onSubmit={handleSubmit}>
             <label className="sr-only">title</label>
-            <input name="title" type="text" placeholder="Title" onChange={handleChange}></input>
+            <input name="title" type="text" placeholder="Title" value={title} onChange={handleChange} required></input>
             <label className="sr-only"></label>
-            <textarea name="content" type="text" placeholder="Take a note..."></textarea>
+            <textarea name="content" type="text" placeholder="Take a note..." value={note} onChange={handleChange} required></textarea>
             <button>Add</button>
         </form>
     )
