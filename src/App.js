@@ -1,6 +1,6 @@
 import './App.css';
 import app from "./firebase";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, push  } from "firebase/database";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Note from "./components/Note";
@@ -12,13 +12,13 @@ function App() {
   const database = getDatabase(app);
   const noteRef = ref(database, "/notes");
 
-  const [array, setArray] = useState([]);
+  const [array, setArray] = useState({});
 
   useEffect(()=>{
 
     const addNote = () =>{
 
-      set(noteRef, array);
+      push(noteRef, array);
 
     }
 
@@ -30,7 +30,7 @@ function App() {
     <div className="App"> 
       <Header />
       <Form setArray={setArray}/>
-      <Note array={array}/>
+      <Note />
       <Footer />
     </div>
   );

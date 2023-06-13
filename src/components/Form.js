@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 const Form = ({setArray}) =>{
 
@@ -20,12 +19,11 @@ const Form = ({setArray}) =>{
         e.preventDefault();
 
         const noteObject = {
-            key: uuidv4(),
             title: title,
             content: note
         }
 
-        setArray((prev)=> [...prev, noteObject]);
+        setArray(noteObject);
         handleReset();
     }
 

@@ -1,21 +1,12 @@
-
-
-const Note = ({array}) =>{
+const Note = () =>{
 
     return(
 
-            array.map((item) => {
-
-                return(
-                    <div className="note" key={item.key}>
-                        <h2>{item.title}</h2>
-                        <p>{item.content}</p>
-                    </div>
-                )
-            })
-
-        
-       
+        <div className="note">
+            <h2>title</h2>
+            <p>content</p>
+        </div>
+             
     )
 }
 
