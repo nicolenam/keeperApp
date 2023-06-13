@@ -5,7 +5,7 @@ const Footer = () =>{
     return(
         <footer>
             <p>
-                Made by Nicole Nam 	&copy; {date}
+                Made by Nej. using Firebase 🔥&copy; {date}
             </p>
         </footer>
     )

@@ -1,3 +1,5 @@
+
+
 const Note = ({array}) =>{
 
     return(
@@ -5,7 +7,7 @@ const Note = ({array}) =>{
             array.map((item) => {
 
                 return(
-                    <div className="note">
+                    <div className="note" key={item.key}>
                         <h2>{item.title}</h2>
                         <p>{item.content}</p>
                     </div>
