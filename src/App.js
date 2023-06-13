@@ -12,13 +12,13 @@ function App() {
   const database = getDatabase(app);
   const noteRef = ref(database, "/notes");
 
-  const [array, setArray] = useState({});
+  const [object, setObject] = useState({});
 
   useEffect(()=>{
 
     const addNote = () =>{
 
-      push(noteRef, array);
+      push(noteRef, object);
 
     }
 
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App"> 
       <Header />
-      <Form setArray={setArray}/>
+      <Form setObject={setObject}/>
       <Note />
       <Footer />
     </div>

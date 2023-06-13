@@ -23,7 +23,7 @@ const Form = ({setArray}) =>{
             content: note
         }
 
-        setArray(noteObject);
+        setObject(noteObject);
         handleReset();
     }
 
