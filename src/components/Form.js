@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const Form = ({setArray}) =>{
+const Form = ({setObject}) =>{
 
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
@@ -19,6 +20,7 @@ const Form = ({setArray}) =>{
         e.preventDefault();
 
         const noteObject = {
+            id: uuidv4(),
             title: title,
             content: note
         }

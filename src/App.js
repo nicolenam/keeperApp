@@ -1,6 +1,6 @@
 import './App.css';
 import app from "./firebase";
-import { getDatabase, ref, set, push  } from "firebase/database";
+import { getDatabase, ref,push  } from "firebase/database";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Note from "./components/Note";
