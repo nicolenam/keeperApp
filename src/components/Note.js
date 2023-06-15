@@ -1,5 +1,5 @@
 import app from "../firebase";
-import { getDatabase, onValue, ref, remove } from "firebase/database";
+import { getDatabase, onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react"; 
 
 const Note = () =>{
@@ -13,18 +13,30 @@ const Note = () =>{
         const getNotes = () => {
 
             onValue(notesRef, (snapshot) => {
-            const data = snapshot.val();
-            if(data) {
-                const notes = Object.values(data);
-                setNotesArray(notes);
-            }else{
+            
+              const data = snapshot.val();
+
+              if(data) {
+                const newNotes = Object.keys(data).map((key) => ({
+                  id: key, 
+                  ...data[key],
+                }));
+                setNotesArray(newNotes);
+
+              }else{
                 setNotesArray([])
-            }
+              }
             });
 
         };
         getNotes();
     }, []);
+
+    const handleDelete = (noteId) =>{
+
+      console.log(noteId);
+
+    }
 
     return (
         <div>
@@ -32,7 +44,7 @@ const Note = () =>{
             <div className="note" key={note.id}>
               <h2>{note.title}</h2>
               <p>{note.content}</p>
-              <button>Delete</button>
+              <button onClick={()=>{handleDelete(note.id)}}>Delete</button>
             </div>
           ))}
         </div>
