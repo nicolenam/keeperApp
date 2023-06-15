@@ -34,7 +34,7 @@ const Note = () =>{
     return (
         <div>
           {notesArray.map((note) => (
-            <div className="note" key={}>
+            <div className="note" key={note.id}>
               <h2>{note.title}</h2>
               <p>{note.content}</p>
             </div>
