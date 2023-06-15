@@ -1,5 +1,5 @@
 import app from "../firebase";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, onValue, ref, remove } from "firebase/database";
 import { useEffect, useState } from "react"; 
 
 const Note = () =>{
@@ -11,7 +11,8 @@ const Note = () =>{
 
     useEffect(() => {
         const getNotes = () => {
-            const notesListener = onValue(notesRef, (snapshot) => {
+
+            onValue(notesRef, (snapshot) => {
             const data = snapshot.val();
             if(data) {
                 const notes = Object.values(data);
@@ -20,13 +21,7 @@ const Note = () =>{
                 setNotesArray([])
             }
             });
-    
-          // Cleanup function to detach the listener
-            return () => {
-                if (notesListener) {
-                    notesListener();
-                }
-            };
+
         };
         getNotes();
     }, []);
@@ -37,6 +32,7 @@ const Note = () =>{
             <div className="note" key={note.id}>
               <h2>{note.title}</h2>
               <p>{note.content}</p>
+              <button>Delete</button>
             </div>
           ))}
         </div>
