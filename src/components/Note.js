@@ -1,5 +1,5 @@
 import app from "../firebase";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, onValue, ref, remove } from "firebase/database";
 import { useEffect, useState } from "react"; 
 
 const Note = () =>{
@@ -32,10 +32,10 @@ const Note = () =>{
         getNotes();
     }, []);
 
-    const handleDelete = (noteId) =>{
+    const handleDelete = (id) =>{
 
-      console.log(noteId);
-
+      const singleNotesRef = ref(database, `/notes/${id}`);
+      remove(singleNotesRef);
     }
 
     return (
